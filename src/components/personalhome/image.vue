@@ -17,17 +17,18 @@ const WallpaperInfo = (url) => {
 }
 
 const props = defineProps({
-    page:Number
+    page:Object
 })
 
 //监听choose的变化，当choose变化时更新图片内容，重新打请求
 watch(props.page,async (newvalue, oldvalue) => {
     showimg.value = false
-    console.log("更新图片内容："+ newvalue)
-    photourls.value = await paginatedQueries({page:newvalue.data, pageSize:10, userId:userstroe.userinfo.id})
+    console.log("更新图片内容："+ newvalue.data)
+    const photourls = await paginatedQueries({page:newvalue.data, pageSize:10, userId:userstroe.userinfo.id})
     showimg.value = true
-    console.log(photourls.value)
+    console.log(photourls)
 },{
+  deep:true,
   immediate:true
 })
 

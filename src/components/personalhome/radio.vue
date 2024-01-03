@@ -3,9 +3,11 @@ import { ref } from 'vue'
 import imagepageVue from './imagepage.vue'
 
     const chooseradio = ref("作品")
+    const flag = ref(true)
 
     const changeChoose = () =>{
         console.log("点击了单选框"+chooseradio.value)
+        flag.value = !flag.value 
     }
 </script>
 
@@ -16,5 +18,7 @@ import imagepageVue from './imagepage.vue'
       <el-radio-button label="收藏品" />
     </el-radio-group>
   </div>
-  <imagepageVue></imagepageVue>
+  <div v-show="flag"><imagepageVue></imagepageVue></div>
+  <div v-show="!flag"><imagepageVue></imagepageVue></div>
+  
 </template>

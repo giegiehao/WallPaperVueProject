@@ -32,7 +32,7 @@ const handleChange: UploadProps['onChange'] = (uploadFile, uploadFiles) => {
     console.log(uploadFile)
     console.log(uploadFiles)
 
-    if (uploadFile.size / 1024 / 1024 > 1) {
+    if (uploadFile.size / 1024 / 1024 > 50) {
     // ElMessage.error('上传文件大小不能超过50M')
     message(uploadFile.name)
   }
@@ -82,7 +82,7 @@ const submitUpload = () => {
     ref="uploadRef"
     drag
     class="upload-demo"
-    action="http://192.168.137.211:8080/wallPaper1_war_exploded/wallpaper/create"
+    action="http://192.168.137.153:8080/wallPaper1_war_exploded/wallpaper/create"
     :data="{userId:userstore.userinfo.id, tags:tags}"
     :on-preview="handlePreview"
     :on-remove="handleRemove"

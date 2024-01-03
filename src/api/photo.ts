@@ -17,4 +17,8 @@ export const sortWallPaper = (tag) => {
 
 export const collectionWallPaper = (params) => request.post('/saveTheImage', params)
 
-export const paginatedQueries = (params) => request.post('/paginatedQueries', params)
+export const paginatedQueries = (params) => request.post('/UserWallPaper/paginatedQueries', params)
+
+export const likeCount = (photoId) => request.get('/wallpaper/queryLikeCountByPhotoId?photoId='+photoId)
+
+export const thumbsUp = (photoId) => request.get('/wallpaper/thumbsUp?photoId='+photoId)

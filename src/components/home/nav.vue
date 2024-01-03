@@ -33,7 +33,7 @@
     import { toRaw } from "@vue/reactivity";
     import { ref } from 'vue'
 
-    const userinfo = toRaw(useUserStore().userinfo) 
+    const userinfo = useUserStore().userinfo 
     console.log(userinfo)
 
     const flag = ref(false)
@@ -51,7 +51,7 @@
       },
       onUpload() {
         const userstore = useUserStore()
-        if(userstore.userinfo == undefined) {
+        if(userstore.userinfo.status != "true") {
           this.login()
         }else {
           this.$router.push('/upload')

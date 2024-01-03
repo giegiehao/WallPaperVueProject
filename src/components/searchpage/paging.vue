@@ -1,12 +1,13 @@
 <template>
+  <div style="min-height: 85vh;">
     <div v-if="showimg" class="demo-image__lazy" >
-        
-        
+
         <WallpaperInfoVue ref="wallpaperinfodate"></WallpaperInfoVue>
           <el-image v-for="(url) in photourls.data" :key="url" :src="url" lazy fit="cover" @click="WallpaperInfo(url)"/>
       <!-- <el-image v-for="(url,index) in urls" :key="url" :src="url" lazy fit="cover" :preview-src-list="urls" :initial-index="index"/> -->
 
     </div>
+  </div>
   </template>
   
   <script setup>
@@ -58,13 +59,13 @@ watch(props.search,async (newvalue, oldvalue) => {
   
   <style scoped>
   .demo-image__lazy {
-    height: 650px;
+    height: 100%;
     width: 100vw;
     display: flex;
     justify-content: center;
     margin: auto;
     flex-wrap: wrap;
-    overflow-y: auto;
+
 }
     
   .el-image {

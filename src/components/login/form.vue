@@ -137,30 +137,30 @@
   await formEl.validate(async (valid) => {
     console.log(valid)
     if (valid) {
-      console.log('submit!')
-      const res = await userLoginService(logininfo.value.name, logininfo.value.password)
-      console.log(res.data)
+      const userstore = useUserStore()
+      await userstore.login(logininfo.value.name, logininfo.value.password)
+      const userinfo = useUserStore().userinfo;
+      console.log(userinfo)
+      // console.log('submit!')
+      // const res = await userLoginService(logininfo.value.name, logininfo.value.password)
+      // console.log(res.data)
 
       //如果登录成功则跳转到主页
-      if(res.data.status == "true") {
-        //对登录信息进行持久化
-      const userstore = useUserStore();
-      userstore.userinfo = toRaw(res.data) 
-      console.log("userinfo=" + userstore.userinfo)
+      if(userinfo.status == "true") {
+        ElMessage.success('登录成功')
         index()
+
       }else {
         ElMessage.error('账号或密码有误，请重新输入')
       }
 
       
-      // userstore.setUserInfo(res.data)
-      // console.log(userstore.userinfo)
-      
     } else {
       ElMessage.error('请正确输入信息')
       return false
     }
-  })
+  }
+  )
 }
 
 const submitRegisterForm = async (formEl: FormInstance | undefined) => {

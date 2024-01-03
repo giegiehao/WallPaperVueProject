@@ -1,7 +1,6 @@
 <template>
     <div v-if="showimg" class="demo-image__lazy" >
-        
-        
+
         <WallpaperInfoVue ref="wallpaperinfodate"></WallpaperInfoVue>
           <el-image v-for="(url,index) in photourls.data" :key="url" :src="url" lazy fit="cover" @click="WallpaperInfo(url)"/>
       <!-- <el-image v-for="(url,index) in urls" :key="url" :src="url" lazy fit="cover" :preview-src-list="urls" :initial-index="index"/> -->

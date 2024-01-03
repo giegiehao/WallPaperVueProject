@@ -3,11 +3,12 @@ import {ref} from 'vue'
 import imageVue from './image.vue';
 
 const currentpage = ref(1)
-const page = ({data:currentpage})
+const page = ref({data:currentpage.value})
 
 const pageChange = () => {
     //点击后发后端请求要page应该要展示的图片url，再通过图片渲染
     console.log("页面改变了"+currentpage.value)
+    page.value.data = currentpage.value
 }
 </script>
 
@@ -15,7 +16,7 @@ const pageChange = () => {
     
     <div class="example-pagination-block">
     <div class="example-demonstration">
-        <imageVue :page="currentpage"></imageVue>
+        <imageVue :page="page"></imageVue>
     </div>
     <el-pagination background  layout="prev, pager, next" :total="100" :page-size="10" @current-change="pageChange()" v-model:current-page="currentpage"/>
   </div>

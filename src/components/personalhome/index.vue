@@ -4,8 +4,12 @@ import radioVue from './radio.vue';
 import { toRaw } from "@vue/reactivity";
 import { useUserStore } from '../../store/userstate';
 import {ref} from 'vue'
+import { ElNotification } from 'element-plus'
+import { h } from 'vue'
 
-const userinfo = toRaw(useUserStore().userinfo)
+const uploadRef = ref()
+
+const userinfo = useUserStore().userinfo
 console.log(userinfo)
 
 const editshow = ref(false)
@@ -16,9 +20,16 @@ const leave = () => {
   editshow.value = false
 }
 
-const onSuccess = () => {
-  //上传成功后重新加载头像并刷新页面
-  location.reload()
+const onSuccess = (response, file, fileList) => {
+  console.log(response)
+  //上传成功后重新加载头像
+  userinfo.profilePhoto = response
+  ElNotification({
+    title: '成功',
+    message: h('i', { style: 'color: teal' }, '头像更改成功'),
+    offset: 44
+  })
+  uploadRef.value.clearFiles()
 }
 
 
@@ -33,12 +44,12 @@ const onSuccess = () => {
         <div class="avatar_border" @mouseenter="enter" @mouseleave="leave" >
           <div class="edit">
             <el-upload
-            accept=""
-              v-model:file-list="fileList"
+              ref="uploadRef"
+              accept=".jpg,.png,.svg"
               :data="{userId:userinfo.id}"
               class="upload-demo"
-              action="http://192.168.137.211:8080/wallPaper1_war_exploded/user/avatar"
-              :on-change="handleChange"
+              style="margin-bottom: 500px;"
+              action="http://192.168.137.153:8080/wallPaper1_war_exploded/user/avatar"
               :on-success="onSuccess"
             >
               <Edit style="position: relative;z-index: 1;width: 28px; height: 28px; margin-left: 95px; margin-top: 95px; cursor: pointer;" v-show="editshow"/>
@@ -102,4 +113,5 @@ const onSuccess = () => {
 .main{
     margin-top: 60px;
 }
+
 </style>
