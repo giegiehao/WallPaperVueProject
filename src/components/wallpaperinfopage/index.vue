@@ -14,26 +14,19 @@ defineExpose({
     url
 })
 
-//监听链接变化，给子组件传值
-// watch(url, () => {
-//   downUrl.value = url.value
-//   console.log(url.value)
-// })
-
-
-// console.log(downUrl)
-
 </script>
 
 <template>
 
     <el-dialog
       v-model="centerDialogVisible"
-      width="70%"
+      width="75%"
       style="height: auto;"
       align-center
       :show-close="false"
       :lock-scroll="false"
+      :destroy-on-close="true"
+      :open-delay="100"
     >
 
     <template #header="{}">

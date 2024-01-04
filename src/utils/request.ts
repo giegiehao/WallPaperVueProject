@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const baseURL = 'http://192.168.137.153:8080/wallPaper1_war_exploded'
+const baseURL = 'http://192.168.137.1:8080/wallPaper1_war_exploded'
 
 //基础请求地址
 const instance = axios.create({

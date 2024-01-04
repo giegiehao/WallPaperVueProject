@@ -4,7 +4,7 @@ import { toRaw } from "@vue/reactivity";
 import { userLoginService } from '@/api/user.ts'
 
 export const useUserStore = defineStore('userstate', () => {
-    const userinfo = ref([])
+    const userinfo = ref()
 
     // const login = async (name, password) => {
     //     const { data } = await userLoginService(name,password)

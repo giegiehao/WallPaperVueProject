@@ -19,6 +19,10 @@ export const collectionWallPaper = (params) => request.post('/saveTheImage', par
 
 export const paginatedQueries = (params) => request.post('/UserWallPaper/paginatedQueries', params)
 
+export const paginatedQueriesUpload = (params) => request.post('/UserWallPaper/paginatedQueriesUpload', params)
+
 export const likeCount = (photoId) => request.get('/wallpaper/queryLikeCountByPhotoId?photoId='+photoId)
 
 export const thumbsUp = (photoId) => request.get('/wallpaper/thumbsUp?photoId='+photoId)
+
+export const deleteLoaded = (photoId) => request.get('/wallpaper/delete?photoId='+photoId)

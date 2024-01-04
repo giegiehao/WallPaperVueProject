@@ -3,7 +3,7 @@
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { Search } from '@element-plus/icons-vue'
-import paging from './paging.vue';
+import paging from './searchWallPaper.vue';
     const router = useRouter();
     console.log('数据是：' ,router.currentRoute.value.query.params)
 

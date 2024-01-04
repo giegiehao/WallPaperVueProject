@@ -27,9 +27,21 @@ const onSuccess = (response, file, fileList) => {
   ElNotification({
     title: '成功',
     message: h('i', { style: 'color: teal' }, '头像更改成功'),
-    offset: 44
+    offset: 45
   })
   uploadRef.value.clearFiles()
+}
+
+const beforeAvatarUpload = (rawFile) => {
+  if (rawFile.size / 1024 / 1024 > 3) {
+    ElNotification({
+    title: '上传失败',
+    message: h('i', { style: 'color: red' }, '头像大小不能超过3m'),
+    offset: 45
+  })
+    return false
+  }
+  return true
 }
 
 
@@ -49,8 +61,9 @@ const onSuccess = (response, file, fileList) => {
               :data="{userId:userinfo.id}"
               class="upload-demo"
               style="margin-bottom: 500px;"
-              action="http://192.168.137.153:8080/wallPaper1_war_exploded/user/avatar"
+              action="http://192.168.137.1:8080/wallPaper1_war_exploded/user/avatar"
               :on-success="onSuccess"
+              :before-upload="beforeAvatarUpload"
             >
               <Edit style="position: relative;z-index: 1;width: 28px; height: 28px; margin-left: 95px; margin-top: 95px; cursor: pointer;" v-show="editshow"/>
             </el-upload>
@@ -66,7 +79,7 @@ const onSuccess = (response, file, fileList) => {
         <div class="main">
             <div style="margin-left: 85px;">
             <h1 style="font-size: 30px;  font-weight:bold;">{{userinfo.username}}</h1>
-            <p style="margin-top: 20px;">加入December{{ userinfo.createTime }}</p>
+            <p style="margin-top: 20px;">加入December {{ userinfo.createTime }}</p>
             </div>
             <div class="radiomain">
                 <radioVue></radioVue>

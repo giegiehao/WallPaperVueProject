@@ -51,7 +51,7 @@
       },
       onUpload() {
         const userstore = useUserStore()
-        if(userstore.userinfo.status != "true") {
+        if(userstore.userinfo?.status != "true") {
           this.login()
         }else {
           this.$router.push('/upload')

@@ -15,10 +15,9 @@ import formvue from './form.vue'
   background-repeat: no-repeat;
   /* background-position: center; */
   /* background-attachment:fixed; */
-  height: 100hv;
+  height: 100vh;
   width: 100vw;
   padding: 0;
-
   display: flex;
   flex-direction: column;
   align-items: center;
