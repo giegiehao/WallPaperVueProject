@@ -1,4 +1,5 @@
 import request from '@/utils/request'
+import { Phone } from '@element-plus/icons-vue/dist/types';
 
 export const wallPaper = (tag) => {
     // console.log("tag="+tag)
@@ -26,3 +27,5 @@ export const likeCount = (photoId) => request.get('/wallpaper/queryLikeCountByPh
 export const thumbsUp = (photoId) => request.get('/wallpaper/thumbsUp?photoId='+photoId)
 
 export const deleteLoaded = (photoId) => request.get('/wallpaper/delete?photoId='+photoId)
+
+export const unFavoritePhoto = (params) => request.post('/UnFavoritePhoto',params)

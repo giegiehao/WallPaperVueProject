@@ -12,6 +12,7 @@
       <el-avatar style="margin-right: 8px;cursor:pointer;" :size="38" :src="'data:image/jpeg;base64,' + userinfo.profilePhoto" >
       <el-avatar> {{ userinfo.username }} </el-avatar>
     </el-avatar>
+
     
     <template #dropdown>
       <el-dropdown-menu>
@@ -21,7 +22,7 @@
     </template>
   </el-dropdown>
 
-  <h3 style="color: aliceblue;margin-top: 3px;" v-if="flag">{{ userinfo.username }}</h3>
+  <h3 style="margin-top: 3px;" v-if="flag">{{ userinfo.username }}</h3>
   
   </div>
       </nav>

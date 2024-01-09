@@ -120,22 +120,22 @@ const handleInputConfirm = () => {
       <el-tag class="mx-1 tag"  effect="plain" @click="clickTag">植物</el-tag>
       <el-tag class="mx-1 tag"  effect="plain" @click="clickTag">二次元</el-tag>
       <el-tag class="mx-1 tag"  effect="plain" @click="clickTag">动漫</el-tag>
+      <el-tag class="mx-1 tag"  effect="plain" @click="clickTag">插画版</el-tag>
+      <el-tag class="mx-1 tag"  effect="plain" @click="clickTag">游戏魂</el-tag>
+      <el-tag class="mx-1 tag"  effect="plain" @click="clickTag">浩瀚星空</el-tag>
+      <el-tag class="mx-1 tag"  effect="plain" @click="clickTag">创意设计</el-tag>
+      <el-tag class="mx-1 tag"  effect="plain" @click="clickTag">影视界</el-tag>
+      <el-tag class="mx-1 tag"  effect="plain" @click="clickTag">城市瞬息</el-tag>
       <el-tag class="mx-1 tag"  effect="plain" @click="clickTag">人物</el-tag>
-      <el-tag class="mx-1 tag"  effect="plain" @click="clickTag">人物</el-tag>
-      <el-tag class="mx-1 tag"  effect="plain" @click="clickTag">人物</el-tag>
-      <el-tag class="mx-1 tag"  effect="plain" @click="clickTag">人物</el-tag>
-      <el-tag class="mx-1 tag"  effect="plain" @click="clickTag">人物</el-tag>
-      <el-tag class="mx-1 tag"  effect="plain" @click="clickTag">人物</el-tag>
-      <el-tag class="mx-1 tag"  effect="plain" @click="clickTag">人物</el-tag>
-      <el-tag class="mx-1 tag"  effect="plain" @click="clickTag">人物</el-tag>
-      <el-tag class="mx-1 tag"  effect="plain" @click="clickTag">人物</el-tag>
-      <el-tag class="mx-1 tag"  effect="plain" @click="clickTag">人物</el-tag>
-      <el-tag class="mx-1 tag"  effect="plain" @click="clickTag">人物</el-tag>
-      <el-tag class="mx-1 tag"  effect="plain" @click="clickTag">人物</el-tag>
-      <el-tag class="mx-1 tag"  effect="plain" @click="clickTag">人物</el-tag>
-      <el-tag class="mx-1 tag"  effect="plain" @click="clickTag">人物</el-tag>
-      <el-tag class="mx-1 tag"  effect="plain" @click="clickTag">人物</el-tag>
-      <el-tag class="mx-1 tag"  effect="plain" @click="clickTag">人物</el-tag>
+      <el-tag class="mx-1 tag"  effect="plain" @click="clickTag">生活方式</el-tag>
+      <el-tag class="mx-1 tag"  effect="plain" @click="clickTag">生灵万物</el-tag>
+      <el-tag class="mx-1 tag"  effect="plain" @click="clickTag">体育运动</el-tag>
+      <el-tag class="mx-1 tag"  effect="plain" @click="clickTag">文字</el-tag>
+      <el-tag class="mx-1 tag"  effect="plain" @click="clickTag">唯美</el-tag>
+      <el-tag class="mx-1 tag"  effect="plain" @click="clickTag">CG</el-tag>
+      <el-tag class="mx-1 tag"  effect="plain" @click="clickTag">情侣</el-tag>
+      <el-tag class="mx-1 tag"  effect="plain" @click="clickTag">科技</el-tag>
+      <el-tag class="mx-1 tag"  effect="plain" @click="clickTag">玩球的</el-tag>
 
 
     </div>

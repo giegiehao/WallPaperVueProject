@@ -61,7 +61,7 @@ const beforeAvatarUpload = (rawFile) => {
               :data="{userId:userinfo.id}"
               class="upload-demo"
               style="margin-bottom: 500px;"
-              action="http://192.168.137.153:8080/wallPaper1_war_exploded/user/avatar"
+              action="http://192.168.137.38:8080/wallPaper1_war_exploded/user/avatar"
               :on-success="onSuccess"
               :before-upload="beforeAvatarUpload"
             >

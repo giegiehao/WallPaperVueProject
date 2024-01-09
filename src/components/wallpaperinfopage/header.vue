@@ -2,7 +2,7 @@
 import { ref,watch,computed,onMounted,onBeforeUpdate,toRaw, inject } from 'vue'
 import { usePhotoStore,useUserStore } from '../../store/userstate';
 import { uploaderInformation } from '../../api/user';
-import { collectionWallPaper, likeCount, thumbsUp, deleteLoaded } from '../../api/photo';
+import { collectionWallPaper, likeCount, thumbsUp, deleteLoaded, unFavoritePhoto } from '../../api/photo';
 import router from '@/components/router/index.js'
 
 const photostore = usePhotoStore()
@@ -45,7 +45,7 @@ const getDate = async (photoid) => {
 const watchUrl = () => {
     id.value = currenUrl.value.split("=")[1]
     // console.log(id)
-    downloadUrl.value = "http://192.168.137.153:8080/wallPaper1_war_exploded/downloadPhoto?photoId=" + id.value
+    downloadUrl.value = "http://192.168.137.38:8080/wallPaper1_war_exploded/downloadPhoto?photoId=" + id.value
     getDate(id.value)
     collectionstatus.value = true
 }
@@ -62,6 +62,24 @@ watch(currenUrl, () => {
 //取消收藏
 const cancelCollectionAction = async () => {
     // 
+    const status = await unFavoritePhoto({userId:userstore.userinfo?.id,photoId:id.value})
+    console.log(status)
+    if(status.data == 1) {
+    ElNotification({
+        title: '通知',
+        message: '已取消收藏',
+        type: 'info',
+        position: 'bottom-right',
+        })
+    }else{
+        ElNotification({
+        title: '通知',
+        message: '该图片取消收藏',
+        type: 'info',
+        position: 'bottom-right',
+        })
+    }
+
     collectionstatus.value = !collectionstatus.value
 }
 
@@ -93,7 +111,7 @@ const collection = async () => {
         ElNotification({
             title: '收藏失败',
             message: '请重新登录或检查网络情况',
-            type: '',
+            type: 'error',
             position: 'bottom-right',
   })
     }
