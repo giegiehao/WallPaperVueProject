@@ -15,11 +15,13 @@ export const useUserStore = defineStore('userstate', () => {
     async function login(name, password){
         const {data} = await userLoginService(name,password)
         console.log(data)
-        if (data.status == "true"){
+        // if (data.status == "true"){
+        //     userinfo.value = data
+        // }else{
+        //     userinfo.value.status = "false";
+        // }
             userinfo.value = data
-        }else{
-            userinfo.value.status = "false";
-        }
+        
         
         console.log(userinfo.value)
     }

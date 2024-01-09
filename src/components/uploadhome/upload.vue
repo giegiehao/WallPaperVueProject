@@ -82,7 +82,7 @@ const submitUpload = () => {
     ref="uploadRef"
     drag
     class="upload-demo"
-    action="http://192.168.137.1:8080/wallPaper1_war_exploded/wallpaper/create"
+    action="http://192.168.137.153:8080/wallPaper1_war_exploded/wallpaper/create"
     :data="{userId:userstore.userinfo.id, tags:tags}"
     :on-preview="handlePreview"
     :on-remove="handleRemove"

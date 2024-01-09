@@ -26,7 +26,8 @@ const getDate = async (photoid) => {
     likecountref.value = likecount.data
     uploaderinfor.value = toRaw(uploaderinfor.value.data)
     console.log(uploaderinfor.value)
-    if (uploaderinfor.value.id != userstore.userinfo.id){
+
+    if (uploaderinfor.value.id != userstore.userinfo?.id){
         console.log("false")
         remove.value = false
     }else {
@@ -44,7 +45,7 @@ const getDate = async (photoid) => {
 const watchUrl = () => {
     id.value = currenUrl.value.split("=")[1]
     // console.log(id)
-    downloadUrl.value = "http://192.168.137.1:8080/wallPaper1_war_exploded/downloadPhoto?photoId=" + id.value
+    downloadUrl.value = "http://192.168.137.153:8080/wallPaper1_war_exploded/downloadPhoto?photoId=" + id.value
     getDate(id.value)
     collectionstatus.value = true
 }
@@ -107,6 +108,8 @@ const onlike = () => {
     likedisabled.value = true
 }
 
+const thisPageClose = inject('wallpaperinfopageclose')
+
 //下架图片
 const removeAction = async () => {
     const status = await deleteLoaded(id.value)
@@ -118,7 +121,7 @@ const removeAction = async () => {
         type: 'info',
         })
         //关闭当前图片弹窗
-        console.log(inject('reload'))
+        thisPageClose()
     }
 }
 
@@ -132,10 +135,10 @@ const removeAction = async () => {
         <el-avatar 
             v-if="uploaderinfor"
             class="mr-3"
-            :size="65"
+            :size="63"
             :src="'data:image/jpeg;base64,' + uploaderinfor.profilePhoto"
         ><el-avatar>{{ uploaderinfor.username }}</el-avatar></el-avatar>
-          <h3 v-if="uploaderinfor" style="margin-left: 20px;margin-top: 15px;">{{ uploaderinfor.username }}</h3>
+          <h2 v-if="uploaderinfor" style="margin-left: 17px;margin-top: 15px;">{{ uploaderinfor.username }}</h2>
         </div>
         <div class="right">
 

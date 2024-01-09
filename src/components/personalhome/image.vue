@@ -1,5 +1,5 @@
 <script setup>
-import {ref, watch} from 'vue'
+import {ref, watch, provide} from 'vue'
 import WallpaperInfoVue from '../wallpaperinfopage/index.vue'
 import { paginatedQueries, paginatedQueriesUpload } from '../../api/photo';
 import { useUserStore,usePhotoStore } from '../../store/userstate';
@@ -43,7 +43,7 @@ const props = defineProps({
 const pageChange = async () => {
     showimg.value = false
     console.log("更新图片内容："+ currentpage.value + props.page.choose)
-    if (props.page.choose == "收藏品") {
+    if (props.page.choose == "收藏") {
       const { data } = await paginatedQueries({page:currentpage.value, pageSize:9, userId:userstroe.userinfo.id})
       console.log(data)
       response.value = data
@@ -58,6 +58,12 @@ const pageChange = async () => {
 
 pageChange()
 
+provide('wallpaperinfopageclose', () => {
+  //下架图片后关闭当前弹窗
+  wallpaperinfodate.value.centerDialogVisible = false
+  //让该urls置空/或者
+})
+
 </script>
 
 <template>
@@ -66,15 +72,15 @@ pageChange()
       <WallpaperInfoVue ref="wallpaperinfodate"></WallpaperInfoVue>
       <el-image v-for="(url,index) in response.urls" :key="url" :src="url"  fit="cover" @click="WallpaperInfo(url)"/>
       <div style="display: flex;justify-content: center;align-items: center;width:100vw">
-      <el-pagination style="margin: auto;" background  layout="prev, pager, next" :total="response.totalCount" :page-size="9" @current-change="pageChange()" v-model:current-page="currentpage"/>
+      <el-pagination v-if="response.urls.length > 0" style="margin: auto;" background  layout="prev, pager, next" :total="response.totalCount" :page-size="9" @current-change="pageChange()" v-model:current-page="currentpage"/>
       </div>
     </div>
 </template>
 
 <style scoped>
     .container{
-        background-color: rgb(255, 255, 255);
-        width: 85vw;
+        /* background-color: rgb(114, 58, 58); */
+        width: 86vw;
         height: auto;
     }
 
