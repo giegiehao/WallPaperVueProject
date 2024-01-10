@@ -76,7 +76,7 @@ defineOptions({
 <style scoped>
 
 .header{
-  background: url("@/assets/photo/forest-8419725_1920.jpg");
+  background: url("@/assets/photo/wallhaven-o5wlp9_2560x1440.png");
   background-size: cover;
   background-repeat: no-repeat;
   /* background-position: center; */

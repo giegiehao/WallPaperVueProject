@@ -61,6 +61,7 @@
       logOut() {
         const userstore = useUserStore()
         userstore.userinfo = undefined //置空登录信息
+        userstore.removeToken();
         this.$router.go(0)
       }
     }

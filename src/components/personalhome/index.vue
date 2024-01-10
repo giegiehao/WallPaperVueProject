@@ -9,7 +9,8 @@ import { h } from 'vue'
 
 const uploadRef = ref()
 
-const userinfo = useUserStore().userinfo
+const userstore = useUserStore()
+const userinfo = userstore.userinfo
 console.log(userinfo)
 
 const editshow = ref(false)
@@ -61,7 +62,8 @@ const beforeAvatarUpload = (rawFile) => {
               :data="{userId:userinfo.id}"
               class="upload-demo"
               style="margin-bottom: 500px;"
-              action="http://192.168.137.38:8080/wallPaper1_war_exploded/user/avatar"
+              action="http://192.168.137.153:8080/wallPaper1_war_exploded/user/avatar"
+              :headers="{Authorization:userstore.token}"
               :on-success="onSuccess"
               :before-upload="beforeAvatarUpload"
             >

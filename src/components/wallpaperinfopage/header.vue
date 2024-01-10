@@ -45,7 +45,7 @@ const getDate = async (photoid) => {
 const watchUrl = () => {
     id.value = currenUrl.value.split("=")[1]
     // console.log(id)
-    downloadUrl.value = "http://192.168.137.38:8080/wallPaper1_war_exploded/downloadPhoto?photoId=" + id.value
+    downloadUrl.value = "http://192.168.137.153:8080/wallPaper1_war_exploded/downloadPhoto?photoId=" + id.value
     getDate(id.value)
     collectionstatus.value = true
 }
@@ -120,10 +120,16 @@ const collection = async () => {
 }
 
 //点赞自增
-const onlike = () => {
-    thumbsUp(id.value)
+const onlike = async () => {
+    if(userstore.userinfo?.status != "true"){
+        router.push('/login')
+    }else{
+    const status = await thumbsUp(id.value)
+    if (status.data == "1") {
     likecountref.value++
-    likedisabled.value = true
+    likedisabl
+    }ed.value = true
+    }
 }
 
 const thisPageClose = inject('wallpaperinfopageclose')

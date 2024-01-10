@@ -5,6 +5,15 @@ import { userLoginService } from '@/api/user.ts'
 
 export const useUserStore = defineStore('userstate', () => {
     const userinfo = ref()
+    const token = ref("")
+
+    const setToken = (tk) => {
+        token.value = tk;
+    }
+
+    const removeToken = () => {
+        token.value = "";
+    }
 
     // const login = async (name, password) => {
     //     const { data } = await userLoginService(name,password)
@@ -21,14 +30,25 @@ export const useUserStore = defineStore('userstate', () => {
         //     userinfo.value.status = "false";
         // }
             userinfo.value = data
+            token.value = data.map.token
+            // console.log(token.value)
         
         
         console.log(userinfo.value)
     }
 
+    const logout = () => {
+        userinfo.value = {}
+        removeToken()
+    }
+
     return {
         userinfo,
-        login
+        login,
+        logout,
+        setToken,
+        removeToken,
+        token
     }
 },{
     persist:true
