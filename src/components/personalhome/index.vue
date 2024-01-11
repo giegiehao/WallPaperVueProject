@@ -6,12 +6,15 @@ import { useUserStore } from '../../store/userstate';
 import {ref} from 'vue'
 import { ElNotification } from 'element-plus'
 import { h } from 'vue'
+import {baseURL} from '@/utils/request.ts'
+
+const action = baseURL + "/user/avatar"
 
 const uploadRef = ref()
 
 const userstore = useUserStore()
 const userinfo = userstore.userinfo
-console.log(userinfo)
+// console.log(userinfo)
 
 const editshow = ref(false)
 const enter = () => {
@@ -62,7 +65,7 @@ const beforeAvatarUpload = (rawFile) => {
               :data="{userId:userinfo.id}"
               class="upload-demo"
               style="margin-bottom: 500px;"
-              action="http://192.168.137.153:8080/wallPaper1_war_exploded/user/avatar"
+              :action= action
               :headers="{Authorization:userstore.token}"
               :on-success="onSuccess"
               :before-upload="beforeAvatarUpload"

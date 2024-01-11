@@ -4,6 +4,7 @@ import { ref, onMounted,computed } from 'vue'
 import { type UploadProps, type UploadUserFile, type UploadInstance,  } from 'element-plus'
 import tagsVue from './tags.vue'
 import { useUserStore } from '../../store/userstate'
+import {baseURL} from '@/utils/request.ts'
 
 const uploadRef = ref<UploadInstance>()
 
@@ -14,6 +15,8 @@ const userstore = useUserStore()
 const orgtags = ref(null)
 
 const tags = computed(() => orgtags.value?.tagstostring)
+
+const action = baseURL + "/wallpaper/create"
 
 
 const handleRemove: UploadProps['onRemove'] = (uploadFile, uploadFiles) => {
@@ -82,7 +85,7 @@ const submitUpload = () => {
     ref="uploadRef"
     drag
     class="upload-demo"
-    action="http://192.168.137.153:8080/wallPaper1_war_exploded/wallpaper/create"
+    :action= action
     :headers="{Authorization:userstore.token}"
     :data="{userId:userstore.userinfo.id, tags:tags}"
     :on-preview="handlePreview"

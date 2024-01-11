@@ -4,6 +4,7 @@ import { usePhotoStore,useUserStore } from '../../store/userstate';
 import { uploaderInformation } from '../../api/user';
 import { collectionWallPaper, likeCount, thumbsUp, deleteLoaded, unFavoritePhoto } from '../../api/photo';
 import router from '@/components/router/index.js'
+import {baseURL} from '@/utils/request.ts'
 
 const photostore = usePhotoStore()
 const userstore = useUserStore()
@@ -45,7 +46,7 @@ const getDate = async (photoid) => {
 const watchUrl = () => {
     id.value = currenUrl.value.split("=")[1]
     // console.log(id)
-    downloadUrl.value = "http://192.168.137.153:8080/wallPaper1_war_exploded/downloadPhoto?photoId=" + id.value
+    downloadUrl.value = baseURL + "/downloadPhoto?photoId=" + id.value
     getDate(id.value)
     collectionstatus.value = true
 }
